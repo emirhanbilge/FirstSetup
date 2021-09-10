@@ -4,7 +4,7 @@ import subprocess
 
 def resetnetwork():
     #######################################
-    bashCommand = "cd /home/pi/EbbScripts/Network/" 
+    bashCommand = "cd /home/pi/Desktop/EbbScripts/Network/" 
     process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
     output, error = process.communicate()
     bashCommand = "sudo ./resetNetwork" 
@@ -14,7 +14,7 @@ def resetnetwork():
 
 
 def startTrigerModbus():
-    bashCommand = "cd /home/pi/EbbScripts/Network/" 
+    bashCommand = "cd /home/pi/Desktop/EbbScripts/Network/" 
     process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
     output, error = process.communicate()
     bashCommand = "sudo ./modbusCrontabCreate "
