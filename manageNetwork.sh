@@ -1,6 +1,7 @@
 #!/bin/bash
 
 cd /home/pi/Desktop/EbbScripts/Network/ 
+sudo chmod +x resetNetwork.sh
 sudo ./resetNetwork.sh
 
 
@@ -18,4 +19,5 @@ else
 fi
 
 cd /home/pi/Desktop/EbbScripts/Network/ 
+sudo chmod +x modbusCrontabCreate.sh
 sudo ./modbusCrontabCreate.sh
