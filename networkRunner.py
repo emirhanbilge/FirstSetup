@@ -4,33 +4,28 @@ import subprocess
 
 def resetnetwork():
     #######################################
-    bashCommand = "cd /home/pi/Desktop/EbbScripts/Network/" 
-    process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
-    output, error = process.communicate()
-    bashCommand = "sudo ./resetNetwork" 
+    bashCommand = "cd /home/pi/Desktop/EbbScripts/Network/ && sudo ./resetNetwork.sh" 
     process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
     output, error = process.communicate()
     ####################################
 
 
 def startTrigerModbus():
-    bashCommand = "cd /home/pi/Desktop/EbbScripts/Network/" 
-    process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
-    output, error = process.communicate()
-    bashCommand = "sudo ./modbusCrontabCreate "
+    bashCommand = "cd /home/pi/Desktop/EbbScripts/Network/ && sudo ./modbusCrontabCreate.sh "
     process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
     output, error = process.communicate()
 def sendNetwork(ip , subnetMask , gateway ):
 
     resetnetwork()
-    bashCommand = "chmod u+x netSet.sh " 
+    bashCommand = "chmod u+x netSet.sh" 
     process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
     output, error = process.communicate()
     print("Error code " , error)
-    bashCommand = "./netSet.sh" +  ip +" "+ subnetMask +" "+ gateway
+    bashCommand = "sudo ./netSet.sh" +  ip +" "+ subnetMask +" "+ gateway
     process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
     output, error = process.communicate()
-
+    startTrigerModbus()
 
 def writedhcp():
     resetnetwork() 
+    startTrigerModbus()
